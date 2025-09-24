@@ -1,41 +1,82 @@
 import React, { useState } from "react";
 
 function App() {
+  const nigeriaStates = [
+    "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno",
+    "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe", "Imo", "Jigawa",
+    "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger",
+    "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara",
+    "Federal Capital Territory"
+  ];
+  
   const [data, setData] = useState([
     { state: "Abia", capital: "Umuahia" },
     { state: "Adamawa", capital: "Yola" },
     { state: "Akwa Ibom", capital: "Uyo" },
-    { state: "Anambra", capital: "Awka" },
-    { state: "Bauchi", capital: "Bauchi" },
-    { state: "Bayelsa", capital: "Yenagoa" },
-    { state: "Benue", capital: "Makurdi" },
-    { state: "Borno", capital: "Maiduguri" },
-    { state: "Cross River", capital: "Calabar" },
-    { state: "Delta", capital: "Asaba" },
-    { state: "Ebonyi", capital: "Abakaliki" },
-    { state: "Edo", capital: "Benin City" },
-    { state: "Ekiti", capital: "Ado-Ekiti" },
-    { state: "Enugu", capital: "Enugu" },
   ]);
   
   const [stateValue, setStateValue] = useState("");
   const [capitalValue, setCapitalValue] = useState("");
+  const [message, setMessage] = useState(""); // notification
   
   function addState() {
-    if (!stateValue || !capitalValue) return;
-    setData((old) => [...old, { state: stateValue, capital: capitalValue }]);
+    const stateTrimmed = stateValue.trim();
+    const capitalTrimmed = capitalValue.trim();
+    
+    // check if it's a valid Nigerian state
+    if (!nigeriaStates.includes(stateTrimmed)) {
+      setMessage(`"${stateTrimmed}" is not one of Nigeria's 36 states.`);
+      return;
+    }
+    
+    // check if already added
+    if (data.some((item) => item.state.toLowerCase() === stateTrimmed.toLowerCase())) {
+      setMessage(`"${stateTrimmed}" is already in the list.`);
+      return;
+    }
+    
+    // check if capital is provided
+    if (!capitalTrimmed) {
+      setMessage("Please enter the capital.");
+      return;
+    }
+    
+    // add state
+    setData((old) => [...old, { state: stateTrimmed, capital: capitalTrimmed }]);
+    setMessage(`${stateTrimmed} added successfully!`);
+    
     setCapitalValue("");
     setStateValue("");
   }
   
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      {/* Header */}
       <div className="mb-6 text-center">
         <h1 className="text-4xl font-bold text-gray-900">
           Nigeria: States & Capitals
         </h1>
+        <p className="mt-2 text-gray-600">Including the FCT (Abuja)</p>
       </div>
 
+      {/* Notification */}
+      {message && (
+        <div className="mb-4 text-center">
+          <p
+            className={`inline-block px-4 py-2 rounded-lg text-white ${
+              message.includes("successfully")
+                ? "bg-green-500"
+                : message.includes("already")
+                ? "bg-yellow-500"
+                : "bg-red-500"
+            }`}
+          >
+            {message}
+          </p>
+        </div>
+      )}
+
+      {/* Input Section */}
       <div className="flex flex-wrap gap-6 justify-center mb-8">
         <div className="flex flex-col w-64">
           <label className="mb-2 text-gray-700 font-medium">State</label>
@@ -65,6 +106,7 @@ function App() {
         </button>
       </div>
 
+      {/* List Section */}
       <section className="max-w-4xl mx-auto">
         <h3 className="text-xl font-semibold text-gray-800 mb-4">
           Added Items
