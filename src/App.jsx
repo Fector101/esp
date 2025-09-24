@@ -39,9 +39,7 @@ function App() {
   { state: "Sokoto", capital: "Sokoto" },
   { state: "Taraba", capital: "Jalingo" },
   { state: "Yobe", capital: "Damaturu" },
-  { state: "Zamfara", capital: "Gusau" },
-  { state: "Federal Capital Territory", capital: "Abuja" }
-
+  { state: "Zamfara", capital: "Gusau" }
   ])
   const [stateValue, setStateValue] = useState('')
   const [capitalValue, setCapitalValue] = useState('')
