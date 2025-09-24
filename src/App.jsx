@@ -2,7 +2,7 @@
 //import './App.css'
 
 function Test() {
-  return <p>Test</p>
+  return <p>Test app</p>
 }
 
 function App() {
