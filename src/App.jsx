@@ -18,7 +18,7 @@ function App() {
   { state: "Edo", capital: "Benin City" },
   { state: "Ekiti", capital: "Ado-Ekiti" },
   { state: "Enugu", capital: "Enugu" },
-  { state: "Gombe", capital: "Gombe" },
+/*  { state: "Gombe", capital: "Gombe" },
   { state: "Imo", capital: "Owerri" },
   { state: "Jigawa", capital: "Dutse" },
   { state: "Kaduna", capital: "Kaduna" },
@@ -39,7 +39,7 @@ function App() {
   { state: "Sokoto", capital: "Sokoto" },
   { state: "Taraba", capital: "Jalingo" },
   { state: "Yobe", capital: "Damaturu" },
-  { state: "Zamfara", capital: "Gusau" }
+  { state: "Zamfara", capital: "Gusau" }*/
   ])
   const [stateValue, setStateValue] = useState('')
   const [capitalValue, setCapitalValue] = useState('')
