@@ -12,7 +12,6 @@ function App() {
     setStateValue('')
   }
   
-  useEffect(() => {}, [])
   
   return (
     <>
