@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+function Test() {
+  return <p>Test</p>
+}
+
 function App() {
   const [data, setData] = useState([])
   const [stateValue, setStateValue] = useState('')
@@ -12,7 +16,9 @@ function App() {
     setStateValue('')
   }
   
-  
+  return (
+    <Test/>
+  )
   return (
     <>
       <div className="rounded-3xl border border-gray-500 bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-sm">
