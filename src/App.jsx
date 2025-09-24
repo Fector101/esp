@@ -2,5 +2,5 @@
 //import './App.css'
 
 export default function App() {
-  return <p>Test app</p>
+  return <h1>Test app</h1>
 }
