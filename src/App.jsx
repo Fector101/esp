@@ -1,109 +1,88 @@
-import React from "react";
-import { useState, useEffect } from 'react'
+import React, { useState } from "react";
 
 function App() {
   const [data, setData] = useState([
-    
-  { state: "Abia", capital: "Umuahia" },
-  { state: "Adamawa", capital: "Yola" },
-  { state: "Akwa Ibom", capital: "Uyo" },
-  { state: "Anambra", capital: "Awka" },
-  { state: "Bauchi", capital: "Bauchi" },
-  { state: "Bayelsa", capital: "Yenagoa" },
-  { state: "Benue", capital: "Makurdi" },
-  { state: "Borno", capital: "Maiduguri" },
-  { state: "Cross River", capital: "Calabar" },
-  { state: "Delta", capital: "Asaba" },
-  { state: "Ebonyi", capital: "Abakaliki" },
-  { state: "Edo", capital: "Benin City" },
-  { state: "Ekiti", capital: "Ado-Ekiti" },
-  { state: "Enugu", capital: "Enugu" },
-/*  { state: "Gombe", capital: "Gombe" },
-  { state: "Imo", capital: "Owerri" },
-  { state: "Jigawa", capital: "Dutse" },
-  { state: "Kaduna", capital: "Kaduna" },
-  { state: "Kano", capital: "Kano" },
-  { state: "Katsina", capital: "Katsina" },
-  { state: "Kebbi", capital: "Birnin Kebbi" },
-  { state: "Kogi", capital: "Lokoja" },
-  { state: "Kwara", capital: "Ilorin" },
-  { state: "Lagos", capital: "Ikeja" },
-  { state: "Nasarawa", capital: "Lafia" },
-  { state: "Niger", capital: "Minna" },
-  { state: "Ogun", capital: "Abeokuta" },
-  { state: "Ondo", capital: "Akure" },
-  { state: "Osun", capital: "Oshogbo" },
-  { state: "Oyo", capital: "Ibadan" },
-  { state: "Plateau", capital: "Jos" },
-  { state: "Rivers", capital: "Port Harcourt" },
-  { state: "Sokoto", capital: "Sokoto" },
-  { state: "Taraba", capital: "Jalingo" },
-  { state: "Yobe", capital: "Damaturu" },
-  { state: "Zamfara", capital: "Gusau" }*/
-  ])
-  const [stateValue, setStateValue] = useState('')
-  const [capitalValue, setCapitalValue] = useState('')
+    { state: "Abia", capital: "Umuahia" },
+    { state: "Adamawa", capital: "Yola" },
+    { state: "Akwa Ibom", capital: "Uyo" },
+    { state: "Anambra", capital: "Awka" },
+    { state: "Bauchi", capital: "Bauchi" },
+    { state: "Bayelsa", capital: "Yenagoa" },
+    { state: "Benue", capital: "Makurdi" },
+    { state: "Borno", capital: "Maiduguri" },
+    { state: "Cross River", capital: "Calabar" },
+    { state: "Delta", capital: "Asaba" },
+    { state: "Ebonyi", capital: "Abakaliki" },
+    { state: "Edo", capital: "Benin City" },
+    { state: "Ekiti", capital: "Ado-Ekiti" },
+    { state: "Enugu", capital: "Enugu" },
+  ]);
+  
+  const [stateValue, setStateValue] = useState("");
+  const [capitalValue, setCapitalValue] = useState("");
   
   function addState() {
-    setData(old => [...old, { state: stateValue, capital: capitalValue }])
-    setCapitalValue('')
-    setStateValue('')
+    if (!stateValue || !capitalValue) return;
+    setData((old) => [...old, { state: stateValue, capital: capitalValue }]);
+    setCapitalValue("");
+    setStateValue("");
   }
   
-  
   return (
-    <>
-      <div className="rounded-3xl border border-gray-500 bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-sm">
-        <h1 className="text-3xl font-bold tracking-tight">Nigeria: States & Capitals</h1>
-        <p className="mt-1 text-sm text-gray-600">FCT Abuja.</p>
+    <div className="min-h-screen bg-gray-50 p-6">
+      <div className="mb-6 text-center">
+        <h1 className="text-4xl font-bold text-gray-900">
+          Nigeria: States & Capitals
+        </h1>
       </div>
 
-      <div className="input-box flex gap-[50px] w-[70%] mt-[20px]">
-        <div className="w-[50%] flex flex-col">
-          <h3 className="mb-[10px] text-[#060608] pt-[10%] font-medium">States</h3>
+      <div className="flex flex-wrap gap-6 justify-center mb-8">
+        <div className="flex flex-col w-64">
+          <label className="mb-2 text-gray-700 font-medium">State</label>
           <input
             value={stateValue}
-            className="indent-[10px] bg-white border border-[#2e2e2c] text-black rounded-[10px] h-[50px]"
+            placeholder="Enter state"
+            className="indent-2 border border-gray-300 rounded-lg h-12 focus:ring-2 focus:ring-blue-400 focus:outline-none"
             onChange={(e) => setStateValue(e.target.value)}
           />
         </div>
 
-        <div className="w-[50%] flex flex-col">
-          <h3 className="mb-[10px] text-[#060608] pt-[10%] font-medium">Capital</h3>
+        <div className="flex flex-col w-64">
+          <label className="mb-2 text-gray-700 font-medium">Capital</label>
           <input
             value={capitalValue}
-            className="indent-[10px] bg-white border border-[#2e2e2c] text-black h-[50px] rounded-[10px]"
+            placeholder="Enter capital"
+            className="indent-2 border border-gray-300 rounded-lg h-12 focus:ring-2 focus:ring-blue-400 focus:outline-none"
             onChange={(e) => setCapitalValue(e.target.value)}
           />
         </div>
 
         <button
-          className="text-[17px] h-max self-end bg-blue-300 py-[10px] px-[25px] rounded-[15px]"
-          id="btn"
+          className="self-end bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
           onClick={addState}
         >
           Add
         </button>
       </div>
 
-      <section className="text-left flex flex-col mt-[10px]">
-        <h3 className="text-[20px] font-extralight">Added Items</h3>
-        <hr />
-        <div className="added-item">
-          <div className="card flex py-[10px] italic">
-            <p className="min-w-[100px]">State</p>
-            <p className="min-w-[100px]">Capital</p>
-          </div>
-
+      <section className="max-w-4xl mx-auto">
+        <h3 className="text-xl font-semibold text-gray-800 mb-4">
+          Added Items
+        </h3>
+        <div className="space-y-3">
           {data.map((each, index) => (
-            <div className="card flex py-[10px] italic" key={index}>
-              <p className="min-w-[100px]">{each.state}</p>
-              <p className="min-w-[100px]">{each.capital}</p>
+            <div
+              key={index}
+              className="flex justify-between items-center bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition"
+            >
+              <div>
+                <p className="font-bold text-gray-800">{each.state}</p>
+                <p className="text-gray-600">{each.capital}</p>
+              </div>
               <button
-                className="bg-red-400 px-3 py-[3px] rounded-[5px]"
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
                 onClick={() => {
-                  const newData = data.filter((_, i) => i !== index)
-                  setData(newData)
+                  setData(data.filter((_, i) => i !== index));
                 }}
               >
                 Delete
@@ -112,8 +91,8 @@ function App() {
           ))}
         </div>
       </section>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
