@@ -6,4 +6,4 @@ import './App.css'
 function Test() {
   return <p>Test</p>
 }
-createRoot(document.getElementById("root")).render(<Test />);
+createRoot(document.getElementById("root")).render(<App />);
