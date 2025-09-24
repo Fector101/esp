@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small custom tweaks */
+.line-clamp-3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+body { @apply bg-sky-50 text-slate-800; }
+
+
+
+
+.input-box input:focus {
+  outline-color: rgb(184, 83, 58);
+}
+
+.input-box button {
+  border: unset;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-style: outset;
+}
